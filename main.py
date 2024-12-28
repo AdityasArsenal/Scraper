@@ -13,7 +13,8 @@ class NoonSpider(scrapy.Spider):
                 'name': product.css('div.sc-33a5583c-25 eQerwk::text').get()
             }
 
-        # Follow pagination links and scrape next pages
-        next_page = response.css('a.next-page::attr(href)').get()
-        if next_page:
-            yield response.follow(next_page, self.parse)
+spy = NoonSpider()
+
+sponserd_class = 'div.sc-95ea18ef-24.gzboVs'
+
+cclass="sc-33a5583c-23.hoKgLx"
