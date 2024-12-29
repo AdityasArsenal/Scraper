@@ -1,20 +1,25 @@
-import scrapy
+import json
 
-class NoonSpider(scrapy.Spider):
-    name = 'noon_spider'
-    start_urls = ['https://www.noon.com/uae-en/sports-and-outdoors/exercise-and-fitness/yoga-16328/']
+with open('y_spider/product_data.json') as file:
+    data = json.load(file)
 
-    def parse(self, response):
-        # Iterate over each product container on the page
-        products = response.css('div.sc-b1fef3a-10 bFBwRJ grid')  # Example class, adjust according to the actual HTML
+import json
 
-        for product in products:
-            yield {
-                'name': product.css('div.sc-33a5583c-25 eQerwk::text').get()
-            }
+prices = []
+brands = []
+ranks = []
+i = 0
 
-spy = NoonSpider()
+for product in data:
 
-sponserd_class = 'div.sc-95ea18ef-24.gzboVs'
+    ranks.append(product.get('Rank'))
+    brands.append(product.get('brand'))
+    prices.append(product.get('Price'))
 
-cclass="sc-33a5583c-23.hoKgLx"
+print(len(ranks))
+most_exp_index = prices.index(max(prices))
+
+print(most_exp_index)
+most_exp_brand = brands[most_exp_index]
+
+print(brands[8])

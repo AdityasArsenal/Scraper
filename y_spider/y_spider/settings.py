@@ -12,15 +12,29 @@ BOT_NAME = "y_spider"
 SPIDER_MODULES = ["y_spider.spiders"]
 NEWSPIDER_MODULE = "y_spider.spiders"
 
+FEEDS = {
+    'product_data.csv':{'format':'csv','overwrite':True}, # Saves the data in costom file
+    'product_data.json': {'format': 'json', 'overwrite': True} 
+}
 
+SCRAPEOPS_API_KEY = '1cd49d86-9f79-4b9a-a840-dd854ddc7bf4'
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 10
+
+#DOWNLOADER_MIDDLEWARES = {
+#    "y_spider.middlewares.ScrapeOpsFakeUserAgentMiddleware": 400,
+#}
+
+CONCURRENT_REQUESTS = 32
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "y_spider (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -50,9 +64,7 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "y_spider.middlewares.YSpiderDownloaderMiddleware": 543,
-#}
+
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -90,3 +102,4 @@ ROBOTSTXT_OBEY = True
 # Set settings whose default value is deprecated to a future-proof value
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
