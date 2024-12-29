@@ -36,7 +36,7 @@ class BbbSpider(scrapy.Spider):
                 yield{
                     'Rank' : BbbSpider.i,
                     'brand' : brand,
-                    'Name' : product.css('div.sc-95ea18ef-25.dOJDLL ::text').get(),
+                    'Name' : full_name,
                     'Price' :  product.css('strong.amount ::text').get(),
                     'Sponsored' : 'Y',
                     'Delivery by' : product.css('div.sc-95ea18ef-34.gZsaNM b ::text').get(),
@@ -51,7 +51,8 @@ class BbbSpider(scrapy.Spider):
             else:
                 yield{
                     'Rank' : BbbSpider.i,
-                    'Name' : product.css('div.sc-95ea18ef-25.dOJDLL ::text').get(),
+                    'brand' : brand,
+                    'Name' : full_name,
                     'Price' :  product.css('strong.amount ::text').get(),
                     'Sponsored' : 'N',
                     'Delivery by' : product.css('div.sc-95ea18ef-34.gZsaNM b ::text').get(),
