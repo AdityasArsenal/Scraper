@@ -18,9 +18,6 @@ class BbbSpider(scrapy.Spider):
     links = []
     prices = []
 
-    #hightes_priced_product_rank = max(self.prices).index()
-    #lowest_priced_product_rank = min(self.prices).index()
-
     def parse(self, response):
         products = response.css('div.sc-57fe1f38-0.eSrvHE')
 
@@ -70,6 +67,8 @@ class BbbSpider(scrapy.Spider):
             'https://www.noon.com/uae-en/sports-and-outdoors/exercise-and-fitness/yoga-16328/?isCarouselView=false&limit=50&page=4&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc'
         ]
 
-        for next_page in next_pages:                                # headers = {'User-Agent': user_agent}
-            yield response.follow(next_page, callback= self.parse)  # this is a slower method i have tried 
-                                                                    #don't try
+        for next_page in next_pages:                                
+            yield response.follow(next_page, callback= self.parse)
+            # headers = {'User-Agent': random.choice.(user_agent)}
+            # this is a slow the spider
+
